@@ -48,6 +48,12 @@ To enable database monitoring, let config the DB command like :
 ]
 ```
 
+*NOTE*
+Rememeber add apm module to bootstrap section:
+```
+'bootstrap' => ['log', 'apm'],
+```
+
 ## Transaction 
 This module will auto start new transaction after BEFORE_REQUEDT event. But you can manual start new transaction on Console application like consumer ..etc
 
