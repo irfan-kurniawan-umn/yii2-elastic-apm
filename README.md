@@ -60,7 +60,7 @@ Yii::$app->getModule('apm')->getAgent()->setTransactionId($transactionId);
 
 and stop 
 ```
-App::$app->getModule('apm')->getAgent()->stopTransaction();
+Yii::$app->getModule('apm')->getAgent()->stopTransaction();
 ```
 
 ## Trace
@@ -68,13 +68,13 @@ App::$app->getModule('apm')->getAgent()->stopTransaction();
 Start new span
 
 ``` 
-$span = App::$app->getModule('apm')->getAgent()->startTrace('Process::'.$reflect->getShortName(), 'process');
+$span = Yii::$app->getModule('apm')->getAgent()->startTrace('Process::'.$reflect->getShortName(), 'process');
 ```
 
 and stop :
 
 ``` 
-App::$app->getModule('apm')->getAgent()->stopTrace($span->getId());
+Yii::$app->getModule('apm')->getAgent()->stopTrace($span->getId());
 ```
 
 ## Error / exception notify
@@ -83,7 +83,7 @@ App::$app->getModule('apm')->getAgent()->stopTrace($span->getId());
 try {
 
 } catch (\Exception $throwable) {
-    App::$app->getModule('apm')->getAgent()->notifyException($throwable);
+    Yii::$app->getModule('apm')->getAgent()->notifyException($throwable);
 }
 ```
 
