@@ -1,5 +1,5 @@
 {
-    "name": "FireDemonsu/yii2-elastic-apm",
+    "name": "firedemonsu/yii2-elastic-apm",
     "description": "Elastic Agent for Yii2 Framework",
     "type": "module",
     "version": "1.0.4",
