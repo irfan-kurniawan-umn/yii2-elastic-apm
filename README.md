@@ -15,22 +15,22 @@ composer require irfankurniawan/yii2-elastic-apm
     'class' => 'ivoglent\yii2\apm\Module',
     'configs' => [
         'agent' => [
-            'serverUrl' => 'localhost:8200', //Host and port of APM server 
-            'name' => 'Service name', //Service name 
-            'token' => APM_TOKEN, //Token
+            'serverUrl' => env('APM_SERVER_URL'), // 'localhost:8200', // Host and port of APM server
+            'name' => env('APM_SERVICE_NAME'), //'Service name', // Service name
+            'token' => env('APM_TOKEN'), // Token
         ],
         'skipExceptions' => [
-            //List of exceptions which you want to ignore
-            \yii\web\NotFoundHttpException::class,
-            \yii\web\UnauthorizedHttpException::class,
+            // List of exceptions which you want to ignore
+            // \yii\web\NotFoundHttpException::class,
+            // \yii\web\UnauthorizedHttpException::class,
         ],
         'skipCommands' => [
-            //List of command you dont want to track
-            'rabbitmq/consume',
+            // List of command you dont want to track
+            // 'rabbitmq/consume',
         ],
     ],
-    'enabled' => true // or false,
-]
+    'enabled' => env('APM_ENABLED') // true // or false,
+],
 ```
 
 To enable database monitoring, let config the DB command like :
