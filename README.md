@@ -5,7 +5,7 @@ Elastic Agent for Yii2 Framework
 
 Let install this module via composer
 ``` 
-composer require --prefer-dist --profile -vvv ivoglent/yii2-elastic-apm
+composer require irfankurniawan/yii2-elastic-apm
 ```
 
 ## Configuration
@@ -55,18 +55,20 @@ Rememeber add apm module to bootstrap section:
 ```
 
 ## Transaction 
-This module will auto start new transaction after BEFORE_REQUEDT event. But you can manual start new transaction on Console application like consumer ..etc
+This module will auto start new transaction after BEFORE_REQUEDT event. But you can manual start new transaction on Console application like consumer, etc. Below is the example to see apm transaction
 
 ``` 
-$transactionId = Uuid::uuid4()->toString();
-$txtName = sprintf('consumer.%s', str_replace('-', '.', $queue->getName()));
-Yii::$app->getModule('apm')->getAgent()->startTransaction($txtName, 'consumer', App::$app->getRequestId());
-Yii::$app->getModule('apm')->getAgent()->setTransactionId($transactionId);
-```
+try {
+    $transactionId = Uuid::uuid4()->toString();
+    $test1 = Yii::$app->getModule('apm')->getAgent()->startTransaction('testet nihhh abwueaue', 'consumer', 222222);
+    $test2 = Yii::$app->getModule('apm')->getAgent()->setTransactionId($transactionId);
+    $test3 = Yii::$app->getModule('apm')->getAgent()->stopTransaction();
+    dd($test1,  $test3);
 
-and stop 
-```
-Yii::$app->getModule('apm')->getAgent()->stopTransaction();
+} catch (\Exception $throwable) {
+    $test = Yii::$app->getModule('apm')->getAgent()->notifyException($throwable);
+    dd($test);
+}
 ```
 
 ## Trace
